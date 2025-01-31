@@ -4,34 +4,38 @@ using System.IO;
 
 namespace JournalEntryApp
 {
+    // The main program that serves as the entry point of the application.
     class Program
     {
-        public void Main(string[] args)
+        // The entry point of the application (it should be static for execution).
+        public static void Main(string[] args)
         {
             JournalApp journalApp = new JournalApp(); // Create an instance of JournalApp
 
             while (true)  // Keep running until the user chooses to exit
             {
-                journalApp.DisplayMenu();
+                journalApp.DisplayMenu(); // Show menu options to the user
 
                 Console.Write("What is your choice? ");
                 string choice = Console.ReadLine();
 
-                if (int.TryParse(choice, out int input)) // Validating input
+                // Validate user input
+                if (int.TryParse(choice, out int input))
                 {
+                    // Handle user choices based on input
                     switch (input)
                     {
                         case 1:
-                            journalApp.WriteNewEntry();
+                            journalApp.WriteNewEntry(); // Create a new journal entry
                             break;
                         case 2:
-                            journalApp.DisplayJournal();
+                            journalApp.DisplayJournal(); // Display all journal entries
                             break;
                         case 3:
-                            journalApp.SaveJournalToFile();
+                            journalApp.SaveJournalToFile(); // Save journal entries to a file
                             break;
                         case 4:
-                            journalApp.LoadJournalFromFile();
+                            journalApp.LoadJournalFromFile(); // Load journal entries from a file
                             break;
                         case 5:
                             Console.Write("Would you like to save first? (yes/no) ");
@@ -39,11 +43,11 @@ namespace JournalEntryApp
 
                             if (save == "yes")
                             {
-                                journalApp.SaveJournalToFile();
+                                journalApp.SaveJournalToFile(); // Save journal before exiting
                             }
 
                             Console.WriteLine("Exiting program...");
-                            return; // Exit the program
+                            return; // Exit the application
                         default:
                             Console.WriteLine("Invalid choice. Please enter a number between 1-5.");
                             break;
@@ -57,10 +61,13 @@ namespace JournalEntryApp
         }
     }
 
+    // The class that manages journal entries
     class JournalApp
     {
-        private List<JournalEntry> journal = new List<JournalEntry>(); // Moved inside JournalApp
+        // List to store journal entries
+        private List<JournalEntry> journal = new List<JournalEntry>();
 
+        // Displays the main menu options
         public void DisplayMenu()
         {
             Console.WriteLine("\nSelect an option:");
@@ -71,8 +78,13 @@ namespace JournalEntryApp
             Console.WriteLine("5. Exit");
         }
 
+        // Handles writing a new journal entry
         public void WriteNewEntry()
         {
+            Console.Write("What is your name? ");
+            string name = Console.ReadLine();
+
+            // Array of predefined journal prompts
             string[] prompts = new string[]
             {
                 "What made you smile today?",
@@ -82,34 +94,41 @@ namespace JournalEntryApp
                 "Describe your perfect day."
             };
 
+            // Selects a random prompt from the list
             Random rand = new Random();
             string prompt = prompts[rand.Next(prompts.Length)];
 
-            Console.WriteLine("\nPrompt: " + prompt);
+            Console.WriteLine($"Prompt: " + prompt);
             Console.Write("Your response: ");
             string response = Console.ReadLine();
-            string date = DateTime.Now.ToString("yyyy-MM-dd");
+            string date = DateTime.Now.ToString("yyyy-MM-dd"); // Get the current date
 
-            journal.Add(new JournalEntry { Prompt = prompt, Response = response, Date = date });
+            Console.WriteLine($"Signed: {name}"); // Display name at the end
+
+            // Add new journal entry to the list
+            journal.Add(new JournalEntry { Prompt = prompt, Response = response, Date = date, Name = name });
         }
 
+        // Displays all journal entries
         public void DisplayJournal()
         {
-            if (journal.Count == 0)
+            if (journal.Count == 0) // Check if journal is empty
             {
                 Console.WriteLine("No journal entries found.");
                 return;
             }
 
+            // Loop through and display each journal entry
             foreach (var entry in journal)
             {
                 Console.WriteLine($"\nDate: {entry.Date}");
                 Console.WriteLine($"Prompt: {entry.Prompt}");
                 Console.WriteLine($"Response: {entry.Response}");
-                Console.WriteLine(new string('-', 40));
+                Console.WriteLine(new string('-', 40)); // Separator for readability
             }
         }
 
+        // Saves journal entries to a text file
         public void SaveJournalToFile()
         {
             Console.Write("Enter filename to save the journal: ");
@@ -121,20 +140,21 @@ namespace JournalEntryApp
                 {
                     foreach (var entry in journal)
                     {
-                        sw.WriteLine(entry.Date);
-                        sw.WriteLine(entry.Prompt);
-                        sw.WriteLine(entry.Response);
-                        sw.WriteLine(new string('-', 40));
+                        sw.WriteLine(entry.Date); // Write date to file
+                        sw.WriteLine(entry.Prompt); // Write prompt to file
+                        sw.WriteLine(entry.Response); // Write response to file
+                        sw.WriteLine(new string('-', 40)); // Separator line
                     }
                 }
                 Console.WriteLine("Journal saved successfully.");
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error saving the journal: " + e.Message);
+                Console.WriteLine("Error saving the journal: " + e.Message); // Handle errors
             }
         }
 
+        // Loads journal entries from a text file
         public void LoadJournalFromFile()
         {
             Console.Write("Enter filename to load the journal: ");
@@ -142,18 +162,19 @@ namespace JournalEntryApp
 
             try
             {
-                if (File.Exists(filename))
+                if (File.Exists(filename)) // Check if file exists
                 {
-                    journal.Clear();
+                    journal.Clear(); // Clear current journal before loading new data
                     using (StreamReader sr = new StreamReader(filename))
                     {
                         while (!sr.EndOfStream)
                         {
-                            string date = sr.ReadLine();
-                            string prompt = sr.ReadLine();
-                            string response = sr.ReadLine();
-                            sr.ReadLine(); // Read the separator
+                            string date = sr.ReadLine(); // Read date
+                            string prompt = sr.ReadLine(); // Read prompt
+                            string response = sr.ReadLine(); // Read response
+                            sr.ReadLine(); // Read separator
 
+                            // Add the entry to the journal list
                             journal.Add(new JournalEntry { Date = date, Prompt = prompt, Response = response });
                         }
                     }
@@ -161,20 +182,22 @@ namespace JournalEntryApp
                 }
                 else
                 {
-                    Console.WriteLine("File not found.");
+                    Console.WriteLine("File not found."); // Error if file is missing
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error loading the journal: " + e.Message);
+                Console.WriteLine("Error loading the journal: " + e.Message); // Handle errors
             }
         }
     }
 
+    // The class that represents a single journal entry
     class JournalEntry
     {
-        public string Date { get; set; }
-        public string Prompt { get; set; }
-        public string Response { get; set; }
+        public string Date { get; set; } // Stores the date of the entry
+        public string Prompt { get; set; } // Stores the journal prompt
+        public string Response { get; set; } // Stores the user's response
+        public string Name { get; set; } // Stores the name of the user
     }
 }
