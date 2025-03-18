@@ -31,4 +31,8 @@ public class ChecklistGoal : Goal
     {
         return _timesCompleted;
     }
+    public int GetTargetCount()
+    {
+        return _targetCount;
+    }
 }

@@ -149,7 +149,7 @@ class Program
 
     using (StreamWriter sw = new StreamWriter(filename))
     {
-        sw.WriteLine(totalPoints);
+        sw.WriteLine(points);
         foreach (var goal in goals)
         {
             if (goal is SimpleGoal)
@@ -177,7 +177,7 @@ static void LoadGoals()
     goals.Clear();
     using (StreamReader sr = new StreamReader(filename))
     {
-        totalPoints = int.Parse(sr.ReadLine()); // Load total points
+        points = int.Parse(sr.ReadLine()); // Load total points
 
         string line;
         while ((line = sr.ReadLine()) != null)
