@@ -14,6 +14,6 @@ public class SimpleGoal : Goal
 
     public void MarkComplete()
     {
-        _isComplete = rue;
+        _isComplete = true;
     }
 }
