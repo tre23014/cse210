@@ -1,17 +1,16 @@
-// public abstract class BloodSugar
-// {
-//     private int _range;
+public class BloodSugar
+{
+    private string _bloodIntro;
 
+    public BloodSugar(string bloodIntro)
+    {
+        _bloodIntro = bloodIntro;
+    }
 
-//     public BloodSugar(int range)
-//     {
-//         _range = range;
-//     }
+    public string GetBloodIntro()
+    {
+        return _bloodIntro;
+    }
 
-//     public int GetRange()
-//     {
-//         return _range;
-//     }
-
-//     public abstract string GetInfoBloodSugar();
-// }
+    
+}
