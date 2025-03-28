@@ -24,5 +24,8 @@ This program helps Type 1 diabetics manage their blood sugar by providing guidan
 - Add a graphical interface.
 - Expand the recommendations for different activities.
 
+## Help 
+ - Did use AI to help write content but not code.
+
 ## Author
 Tori Tremelling
