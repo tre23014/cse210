@@ -28,12 +28,11 @@ class Program
 
             if (BloodSugar == "1")
             {
-                ExtremeLowBloodSugar extremeLow = new ExtremeLowBloodSugar("If your blood sugar is extremely low, eat or drink something with fast sugar right away—like glucose tablets, juice, or candy. Wait 15 minutes, then check your blood sugar again. If it’s still low, take more sugar until you’re above 70. After that, eat a small snack with protein or carbs to keep your levels stable. If you ever feel too weak to eat or pass out, someone needs to give you glucagon and call 911.",
-                "The best choices include glucose tablets or glucose gel, which are specifically designed to raise blood sugar rapidly. Other effective options include 4 ounces (½ cup) of juice or regular soda, 1 tablespoon of honey or syrup, or hard candies like Smarties or jelly beans, as long as they are not sugar-free.",
+                ExtremeLowBloodSugar extremeLow = new ExtremeLowBloodSugar("The best choices include glucose tablets or glucose gel, which are specifically designed to raise blood sugar rapidly. Other effective options include 4 ounces (½ cup) of juice or regular soda, 1 tablespoon of honey or syrup, or hard candies like Smarties or jelly beans, as long as they are not sugar-free.",
                 "After consuming 15 grams of fast-acting carbohydrates, blood sugar should be checked again in 15 minutes, and if it remains low, another dose should be taken. Once blood sugar rises above 70 mg/dL, a balanced snack that includes protein and complex carbohydrates, such as peanut butter with crackers or a small sandwich, can help maintain stable levels and prevent another drop. Acting quickly with the right foods can prevent more severe symptoms and the risk of passing out or needing emergency medical intervention.");
 
                 Console.WriteLine();
-                Console.WriteLine(extremeLow.GetBloodIntro());
+                extremeLow.Base();
                 Thread.Sleep(5000);
                 Console.WriteLine();
                 Console.WriteLine(extremeLow.GetFood());
@@ -43,12 +42,11 @@ class Program
             }
             else if (BloodSugar == "2")
             {
-                Low bloodLow = new Low("Your blood sugar level tells you what action to take next. Some levels require immediate treatment, while others mean you're in a safe range. Select your range to get the right information quickly.",
-                "If your blood sugar is between 55 and 70 mg/dL, you should eat 15 grams of fast-acting carbohydrates like glucose tablets, juice, or regular soda. Wait 15 minutes, then check your blood sugar again. If it's still below 70 mg/dL, take another 15 grams and repeat the process. Once your blood sugar is back to normal, eat a balanced snack with protein and complex carbs, like crackers with peanut butter or cheese, to keep your levels stable and prevent another drop.",
+                Low bloodLow = new Low("If your blood sugar is between 55 and 70 mg/dL, you should eat 15 grams of fast-acting carbohydrates like glucose tablets, juice, or regular soda. Wait 15 minutes, then check your blood sugar again. If it's still below 70 mg/dL, take another 15 grams and repeat the process. Once your blood sugar is back to normal, eat a balanced snack with protein and complex carbs, like crackers with peanut butter or cheese, to keep your levels stable and prevent another drop.",
                 "Other good food(s) would be glucose gel, or 4 ounces (½ cup), a tablespoon of honey, maple syrup, or regular sugar, or small amounts of fast-dissolving candies like Smarties or Skittles (not sugar-free).");
 
                 Console.WriteLine();
-                Console.WriteLine(bloodLow.GetBloodIntro());
+                bloodLow.Base();
                 Thread.Sleep(5000);
                 Console.WriteLine();
                 Console.WriteLine(bloodLow.GetNextStepsL());
@@ -58,24 +56,22 @@ class Program
             }
             else if (BloodSugar == "3")
             {
-                Normal normal = new Normal("Your blood sugar level tells you what action to take next. Some levels require immediate treatment, while others mean you're in a safe range. Select your range to get the right information quickly.",
-                "A normal blood sugar level means your body has the right amount of glucose to provide energy without being too high or too low. This is the safest range, where you can think clearly, feel good, and your body functions properly. Keeping your blood sugar in this range as much as possible helps prevent long-term health problems and keeps you feeling your best.");
+                Normal normal = new Normal("A normal blood sugar level means your body has the right amount of glucose to provide energy without being too high or too low. This is the safest range, where you can think clearly, feel good, and your body functions properly. Keeping your blood sugar in this range as much as possible helps prevent long-term health problems and keeps you feeling your best.");
 
                 Console.WriteLine();
-                Console.WriteLine(normal.GetBloodIntro());
+                normal.Base();
                 Thread.Sleep(5000);
                 Console.WriteLine();
                 Console.WriteLine(normal.GetNormal());
             }
             else if (BloodSugar == "4")
             {
-                High bloodHigh = new High("Your blood sugar level tells you what action to take next. Some levels require immediate treatment, while others mean you're in a safe range. Select your range to get the right information quickly.",
-                "If your blood sugar is between 141 and 250 mg/dL, it's higher than normal but not an emergency. Drink water to help flush out excess sugar, take a short walk or light activity if safe, and check if you might have missed a dose of insulin or medication. If your blood sugar stays high or keeps rising, monitor it closely and follow your doctor’s guidance on correction doses or other adjustments.",
+                High bloodHigh = new High("If your blood sugar is between 141 and 250 mg/dL, it's higher than normal but not an emergency. Drink water to help flush out excess sugar, take a short walk or light activity if safe, and check if you might have missed a dose of insulin or medication. If your blood sugar stays high or keeps rising, monitor it closely and follow your doctor’s guidance on correction doses or other adjustments.",
                 "If your blood sugar is between 141 and 250 mg/dL, you may need insulin to help bring it back to a normal range, depending on your treatment plan. If you use a pump, check for malfunctions or blockages. If you take injections, follow your doctor’s guidelines for a correction dose based on your insulin sensitivity. Always wait at least 2 hours after a correction before taking more to avoid low blood sugar. Stay hydrated, monitor your levels, and use insulin carefully to prevent highs from turning into an emergency.",
                 "Water is essential when blood sugar is high because it helps your body remove excess glucose through urination. When blood sugar rises, your kidneys work harder to filter and remove the extra sugar, and drinking plenty of water helps speed up this process, preventing further buildup. Staying hydrated also prevents dehydration, which can happen quickly when blood sugar is elevated. The sooner you lower your blood sugar with water, insulin (if needed), and light activity, the less strain there is on your body, reducing the risk of fatigue, headaches, and further complications like ketone buildup. By drinking enough water, you help your body stabilize blood sugar more efficiently and feel better faster.");
 
                 Console.WriteLine();
-                Console.WriteLine(bloodHigh.GetBloodIntro());
+                bloodHigh.Base();
                 Thread.Sleep(5000);
                 Console.WriteLine();
                 Console.WriteLine(bloodHigh.GetNextStepsH());
@@ -88,14 +84,13 @@ class Program
             }
             else if (BloodSugar == "5")
             {
-                ExtremeHigh extremeHigh = new ExtremeHigh("Your blood sugar level tells you what action to take next. Some levels require immediate treatment, while others mean you're in a safe range. Select your range to get the right information quickly.",
-                "Act quickly to prevent it from getting worse. Drink plenty of water to help flush out excess sugar, and check for ketones if possible. If ketones are present or you feel sick, follow your emergency plan and consider seeking medical help. If you take insulin, follow your doctor’s correction guidelines, but wait at least 2 hours before taking more to avoid dropping too fast. Light activity may help, but avoid exercise if ketones are present. Keep monitoring your blood sugar and stay hydrated until it comes down to a safer range.",
+                ExtremeHigh extremeHigh = new ExtremeHigh("Act quickly to prevent it from getting worse. Drink plenty of water to help flush out excess sugar, and check for ketones if possible. If ketones are present or you feel sick, follow your emergency plan and consider seeking medical help. If you take insulin, follow your doctor’s correction guidelines, but wait at least 2 hours before taking more to avoid dropping too fast. Light activity may help, but avoid exercise if ketones are present. Keep monitoring your blood sugar and stay hydrated until it comes down to a safer range.",
                 "You may need a correction dose of insulin to bring it back to a safe range. Follow your doctor’s guidelines for insulin adjustments based on your correction factor. If you use a pump, check for malfunctions or blockages, as insulin delivery issues can cause high blood sugar. If you take injections, make sure you're using the correct dose and injecting properly. After taking insulin, wait at least 2 hours before taking more to prevent a dangerous drop. Keep drinking water to help flush out excess sugar, and monitor your blood sugar closely. If your levels don’t start improving or you have ketones, follow your emergency plan and seek medical help if needed.",
                 "Ketones are harmful acids that form when your body starts burning fat for energy instead of glucose due to a lack of insulin. High blood sugar levels, like 250 or higher, can lead to ketone buildup, which can be dangerous and cause diabetic ketoacidosis (DKA). If you notice ketones, it’s important to drink plenty of water to help flush them out, take insulin as directed by your doctor, and avoid exercise since it can make things worse. Keep an eye on your blood sugar and ketone levels, and if symptoms like nausea, vomiting, or confusion appear, seek medical help immediately to prevent serious complications.",
                 "Water is crucial when blood sugar is 250 or higher because it helps your body remove excess glucose through urination, preventing further complications. When blood sugar is high, the body pulls water from cells to dilute the extra sugar in the bloodstream, increasing the risk of dehydration. Drinking plenty of water helps replenish lost fluids, supports kidney function, and speeds up the process of flushing out excess sugar before it can cause more harm. Lowering blood sugar sooner with water reduces stress on the kidneys and prevents the buildup of ketones, which can lead to diabetic ketoacidosis (DKA), a life-threatening condition. It also helps relieve symptoms like fatigue, headaches, and dry mouth that come with high blood sugar. The sooner you bring your levels down with water, insulin (if needed), and monitoring, the better you’ll feel and the lower your risk of serious complications.");
 
                 Console.WriteLine();
-                Console.WriteLine(extremeHigh.GetBloodIntro());
+                extremeHigh.Base();
                 Thread.Sleep(5000);
                 Console.WriteLine();
                 Console.WriteLine(extremeHigh.GetNextStepsEH());

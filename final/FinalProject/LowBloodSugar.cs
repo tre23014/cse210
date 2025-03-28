@@ -3,7 +3,7 @@ public class Low : BloodSugar
     private string _nextStepsL;
     private string _foodL;
 
-    public Low(string bloodIntro, string nextStepsL, string foodL) : base(bloodIntro)
+    public Low(string nextStepsL, string foodL) 
     {
         _nextStepsL = nextStepsL;
         _foodL = foodL;
@@ -17,5 +17,10 @@ public class Low : BloodSugar
     public string GetFoodL()
     {
         return _foodL;
+    }
+    
+    public override void Base()
+    {
+        Console.WriteLine("You are a little low.");
     }
 }

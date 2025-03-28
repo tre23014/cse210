@@ -3,7 +3,7 @@ public class ExtremeLowBloodSugar : BloodSugar
     private string _food;
     private string _nextSteps;
     
-    public ExtremeLowBloodSugar(string bloodIntro, string food, string nextSteps) : base(bloodIntro)
+    public ExtremeLowBloodSugar(string food, string nextSteps)
     {
         _food = food;
         _nextSteps = nextSteps;
@@ -17,6 +17,11 @@ public class ExtremeLowBloodSugar : BloodSugar
     public string GetNextSteps()
     {
         return _nextSteps;
+    }
+
+    public override void Base()
+    {
+        Console.WriteLine("You are Extremely Low!");
     }
 
 }

@@ -5,7 +5,7 @@ public class ExtremeHigh : BloodSugar
     private string _ketonesEH;
     private string _waterEH;
 
-    public ExtremeHigh(string bloodIntro, string nextStepsEH, string insulinEH, string ketonesEH, string waterEH) : base(bloodIntro)
+    public ExtremeHigh(string nextStepsEH, string insulinEH, string ketonesEH, string waterEH)
     {
         _nextStepsEH = nextStepsEH;
         _insulinEH = insulinEH;
@@ -31,5 +31,10 @@ public class ExtremeHigh : BloodSugar
     public string GetWaterEH()
     {
         return _waterEH;
+    }
+
+    public override void Base()
+    {
+        Console.WriteLine("You are Extremely High!");
     }
 }

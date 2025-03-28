@@ -2,7 +2,7 @@ public class Normal : BloodSugar
 {
     private string _normal;
 
-    public Normal(string bloodIntro, string normal) : base(bloodIntro)
+    public Normal(string normal)
     {
         _normal = normal;
     }
@@ -10,5 +10,10 @@ public class Normal : BloodSugar
     public string GetNormal()
     {
         return _normal;
+    }
+    
+    public override void Base()
+    {
+        Console.WriteLine("Your blood sugar is Perfect!");
     }
 }

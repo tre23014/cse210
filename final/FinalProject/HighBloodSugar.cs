@@ -4,7 +4,7 @@ public class High : BloodSugar
     private string _insulin;
     private string _water;
 
-    public High(string bloodIntro, string nextStepsH, string insulin, string water) : base(bloodIntro)
+    public High(string nextStepsH, string insulin, string water)
     {
         _nextStepsH = nextStepsH;
         _insulin = insulin;
@@ -24,5 +24,10 @@ public class High : BloodSugar
     public string GetWater()
     {
         return _water;
+    }
+    
+    public override void Base()
+    {
+        Console.WriteLine("You are a little High.");
     }
 }
